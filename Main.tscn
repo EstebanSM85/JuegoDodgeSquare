@@ -1,0 +1,135 @@
+[gd_scene format=3 uid="uid://dqcgx0wvi8i04"]
+
+[ext_resource type="Script" uid="uid://h3xae5d8r7rx" path="res://Main.gd" id="1_3dxm6"]
+[ext_resource type="Texture2D" uid="uid://08k0khie4cq0" path="res://fondo_dodge_square.png" id="1_uu6xs"]
+[ext_resource type="Script" uid="uid://cm2v30lu2nqvc" path="res://Jugador.gd" id="2_fos0i"]
+[ext_resource type="Texture2D" uid="uid://d0lppiucwn6pn" path="res://icon.svg" id="2_r0du0"]
+[ext_resource type="Texture2D" uid="uid://cascpi2kqat4j" path="res://cara-feliz.png" id="4_cm0pq"]
+[ext_resource type="Script" uid="uid://bmbyclbj5xc0b" path="res://Enemigo.gd" id="4_fos0i"]
+[ext_resource type="AudioStream" uid="uid://beetvc40a37dm" path="res://sonido.ogg" id="7_lgr22"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cm0pq"]
+size = Vector2(78, 72)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3dxm6"]
+size = Vector2(81, 74)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fos0i"]
+radius = 31.0
+height = 98.0
+
+[node name="Main" type="Node2D" unique_id=2108866195]
+script = ExtResource("1_3dxm6")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=509844350]
+position = Vector2(2, -4)
+texture = ExtResource("1_uu6xs")
+offset = Vector2(640, 360)
+
+[node name="TiempoLabel" type="Label" parent="." unique_id=353060616]
+offset_left = 43.0
+offset_top = 664.0
+offset_right = 247.0
+offset_bottom = 715.0
+theme_override_font_sizes/font_size = 28
+text = "Tiempo: 0.0 s"
+vertical_alignment = 1
+
+[node name="RecordLabel" type="Label" parent="." unique_id=2146938249]
+offset_left = 1046.0
+offset_top = 668.0
+offset_right = 1259.0
+offset_bottom = 715.0
+theme_override_font_sizes/font_size = 28
+text = "Récord: 0.0 s"
+
+[node name="StartButton" type="Button" parent="." unique_id=987399843]
+offset_left = 540.0
+offset_top = 320.0
+offset_right = 740.0
+offset_bottom = 400.0
+theme_override_colors/font_color = Color(0.9411765, 0.011764706, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "START"
+
+[node name="GameOverLabel" type="Label" parent="." unique_id=152801726]
+offset_left = 421.0
+offset_top = 402.0
+offset_right = 821.0
+offset_bottom = 602.0
+theme_override_font_sizes/font_size = 48
+text = "GAMEOVER	"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TiempoTimer" type="Timer" parent="." unique_id=1007570768]
+wait_time = 0.1
+
+[node name="Jugador" type="CharacterBody2D" parent="." unique_id=1780079820]
+position = Vector2(636, 475)
+script = ExtResource("2_fos0i")
+
+[node name="Sprite2D" type="Sprite2D" parent="Jugador" unique_id=1463250387]
+position = Vector2(1, 7.6293945e-06)
+scale = Vector2(0.6015625, 0.57031256)
+texture = ExtResource("2_r0du0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Jugador" unique_id=1873162868]
+shape = SubResource("RectangleShape2D_cm0pq")
+
+[node name="Area2D" type="Area2D" parent="Jugador" unique_id=1357861424]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Jugador/Area2D" unique_id=1273828011]
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_3dxm6")
+
+[node name="Enemigo" type="CharacterBody2D" parent="." unique_id=587244040]
+position = Vector2(820, 203)
+script = ExtResource("4_fos0i")
+
+[node name="Sprite2D" type="Sprite2D" parent="Enemigo" unique_id=154904599]
+position = Vector2(1.0000153, -4.9999924)
+scale = Vector2(0.16503909, 0.19578785)
+texture = ExtResource("4_cm0pq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemigo" unique_id=1642929350]
+position = Vector2(1, -5)
+shape = SubResource("CapsuleShape2D_fos0i")
+
+[node name="Enemigo2" type="CharacterBody2D" parent="." unique_id=438549145]
+position = Vector2(200, 203)
+script = ExtResource("4_fos0i")
+
+[node name="Sprite2D" type="Sprite2D" parent="Enemigo2" unique_id=1727894840]
+position = Vector2(1.0000153, -4.9999924)
+scale = Vector2(0.16503909, 0.19578785)
+texture = ExtResource("4_cm0pq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemigo2" unique_id=980199424]
+position = Vector2(1, -5)
+shape = SubResource("CapsuleShape2D_fos0i")
+
+[node name="Enemigo3" type="CharacterBody2D" parent="." unique_id=1555064600]
+position = Vector2(400, 400)
+script = ExtResource("4_fos0i")
+
+[node name="Sprite2D" type="Sprite2D" parent="Enemigo3" unique_id=2005799473]
+position = Vector2(1.0000153, -4.9999924)
+scale = Vector2(0.16503909, 0.19578785)
+texture = ExtResource("4_cm0pq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemigo3" unique_id=136333823]
+position = Vector2(1, -5)
+shape = SubResource("CapsuleShape2D_fos0i")
+
+[node name="DificultadTimer" type="Timer" parent="." unique_id=940924425]
+wait_time = 3.0
+
+[node name="MusicaFondo" type="AudioStreamPlayer2D" parent="." unique_id=1675877063]
+stream = ExtResource("7_lgr22")
+autoplay = true
+
+[connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="timeout" from="TiempoTimer" to="." method="_on_tiempo_timer_timeout"]
+[connection signal="colision_con_enemigo" from="Jugador" to="." method="_on_jugador_colision_con_enemigo"]
+[connection signal="timeout" from="DificultadTimer" to="." method="_on_dificultad_timer_timeout"]

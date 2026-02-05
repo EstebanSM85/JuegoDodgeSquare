@@ -1,0 +1,61 @@
+[gd_scene format=3 uid="uid://dqcgx0wvi8i04"]
+
+[ext_resource type="Script" uid="uid://h3xae5d8r7rx" path="res://Main.gd" id="1_3dxm6"]
+[ext_resource type="Texture2D" uid="uid://08k0khie4cq0" path="res://fondo_dodge_square.png" id="1_uu6xs"]
+[ext_resource type="Script" uid="uid://cipx3eocyn2s0" path="res://new_script.gd" id="2_cm0pq"]
+[ext_resource type="Texture2D" uid="uid://d0lppiucwn6pn" path="res://icon.svg" id="2_r0du0"]
+[ext_resource type="Texture2D" uid="uid://cascpi2kqat4j" path="res://cara-feliz.png" id="4_cm0pq"]
+[ext_resource type="Script" uid="uid://bmbyclbj5xc0b" path="res://Enemigo.gd" id="4_fos0i"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cm0pq"]
+size = Vector2(74, 71)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fos0i"]
+radius = 31.0
+height = 98.0
+
+[node name="Main" type="Node2D" unique_id=2108866195]
+script = ExtResource("1_3dxm6")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=509844350]
+position = Vector2(2, -3)
+texture = ExtResource("1_uu6xs")
+offset = Vector2(640, 360)
+
+[node name="Jugador" type="CharacterBody2D" parent="Sprite2D" unique_id=1780079820]
+position = Vector2(609, 389)
+script = ExtResource("2_cm0pq")
+
+[node name="Sprite2D" type="Sprite2D" parent="Sprite2D/Jugador" unique_id=1463250387]
+position = Vector2(2, 1.0000153)
+scale = Vector2(0.6015625, 0.57031256)
+texture = ExtResource("2_r0du0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/Jugador" unique_id=1873162868]
+position = Vector2(1, 0)
+shape = SubResource("RectangleShape2D_cm0pq")
+
+[node name="Enemigo" type="CharacterBody2D" parent="Sprite2D" unique_id=587244040]
+position = Vector2(818, 206)
+script = ExtResource("4_fos0i")
+
+[node name="Sprite2D" type="Sprite2D" parent="Sprite2D/Enemigo" unique_id=154904599]
+position = Vector2(1.0000153, -4.9999924)
+scale = Vector2(0.16503909, 0.19578785)
+texture = ExtResource("4_cm0pq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/Enemigo" unique_id=1642929350]
+position = Vector2(1, -5)
+shape = SubResource("CapsuleShape2D_fos0i")
+
+[node name="TiempoLabel" type="Label" parent="." unique_id=353060616]
+offset_left = 29.0
+offset_top = 678.0
+offset_right = 98.0
+offset_bottom = 713.0
+
+[node name="TiempoTimer" type="Timer" parent="." unique_id=2133902438]
+wait_time = 0.1
+autostart = true
+
+[connection signal="timeout" from="TiempoTimer" to="." method="_on_tiempo_timer_timeout"]
